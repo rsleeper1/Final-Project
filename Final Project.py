@@ -3,6 +3,9 @@
 #This program finds the most cost-effective way to push water through a city, as well as,
 #the least cost-effective way to push water through a city.
 
+
+
+#The vertex class allows me to create "buildings" in the city for the water to reach.
 class Vertex:
     def __init__(self, key):
         self.id = key
@@ -33,7 +36,10 @@ class Vertex:
     def getWeight(self,nbr):
         return self.connectedTo[nbr]
     
-    
+
+#The graph class allows me to create a "city" and then add "buildings" to it.
+#I can also create edges in the graph and put a cost on each edge showing how
+#much it would cost to run water through that pipe.
 class Graph:
     def __init__(self):
         self.vertList = {}
@@ -67,27 +73,9 @@ class Graph:
     def __iter__(self):
         return iter(self.vertList.values())
     
-    
-class Stack:
-     def __init__(self):
-         self.items = []
-
-     def isEmpty(self):
-         return self.items == []
-
-     def push(self, item):
-         self.items.append(item)
-
-     def pop(self):
-         return self.items.pop()
-
-     def peek(self):
-         return self.items[len(self.items)-1]
-
-     def size(self):
-         return len(self.items)
         
-
+#The cheapCityTraversal method takes a graph and finds the cheapest route to transport water
+#to all of the buildings in the city, starting from the water station.
 def cheapCityTraversal(city, startingPoint, path):
     smallestWeight = 100
     while len(path) < 6:
@@ -101,7 +89,8 @@ def cheapCityTraversal(city, startingPoint, path):
         break
     return path
 
-
+#The expensiveCityTraversal method takes a graph and finds the most expensive route
+#to transport water to all of the buildings in the city, starting from the water station.
 def expensiveCityTraversal(city, startingPoint, path):
     heavyWeight = 0
     while len(path) < 6:
@@ -116,9 +105,11 @@ def expensiveCityTraversal(city, startingPoint, path):
     return path
 
 
-
-
-        
+#In the main function I create a city with six buildings in it and then make each one have
+#a number of water pipes leaving and entering it. After I create the graph I show the user
+#a list of all of the buildings and where each one can transport water to. The last number
+#on the list is the cost for transporting the water through that pipe. Finally, I call both the
+#cheapCityTraversal and expensiveCityTraversal and print out the results.
 def main():
     city = Graph()
     waterStation = city.addVertex('Water Station')
