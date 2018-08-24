@@ -1,7 +1,6 @@
 #Final Project
 #Ryan Sleeper
-#This program finds the most cost-effective way to push water through a city, as well as,
-#the least cost-effective way to push water through a city.
+#This program finds the most cost-effective and least cost-effective way to push water through a city.
 
 
 
